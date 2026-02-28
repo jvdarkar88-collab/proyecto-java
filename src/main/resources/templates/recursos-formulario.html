@@ -25,7 +25,7 @@
     </div>
   </header>
 
-  <main class="container pb-5"> 
+  <main class="container pb-5">
     <div class="row g-3">
       <div class="col-lg-7">
         <div class="card shadow-sm">
@@ -35,6 +35,7 @@
                   th:action="${resource.id} != null ? @{/recursos/{id}(id=${resource.id})} : @{/recursos}"
                   method="post">
 
+              <!-- ─── Campos existentes ─────────────────────── -->
               <div class="mb-3">
                 <label class="form-label">Título</label>
                 <input class="form-control form-control-lg" th:field="*{titulo}" placeholder="Ej: Guía de aprendizaje: variables" required />
@@ -77,10 +78,70 @@
                 </select>
               </div>
 
+              <hr class="my-4"/>
+
+              <!-- ─── Campos nuevos del alumno ──────────────── -->
+              <h5 class="fw-semibold mb-3">Datos del alumno</h5>
+
+              <div class="mb-3">
+                <label class="form-label">Nombre del alumno</label>
+                <input class="form-control" th:field="*{nombreAlumno}" placeholder="Ej: Carlos López" required />
+              </div>
+
+              <div class="row g-2">
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label class="form-label">Edad</label>
+                    <input class="form-control" type="number" th:field="*{edad}" placeholder="Ej: 14" required />
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="mb-3">
+                    <label class="form-label">Horas en la academia</label>
+                    <input class="form-control" type="number" th:field="*{horasEnAcademia}" placeholder="Ej: 3" required />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-2">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label">Hora de entrada</label>
+                    <input class="form-control" type="time" th:field="*{horaEntrada}" required />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label">Hora de salida</label>
+                    <input class="form-control" type="time" th:field="*{horaSalida}" required />
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Nombre del profesor a cargo</label>
+                <input class="form-control" th:field="*{nombreProfesor}" placeholder="Ej: Prof. Martínez" required />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Materia de reforzamiento</label>
+                <select class="form-select" th:field="*{materiaReforzamiento}">
+                  <option value="">-- Seleccionar materia --</option>
+                  <option value="Matemática">Matemática</option>
+                  <option value="Comunicación y Lenguaje">Comunicación y Lenguaje</option>
+                  <option value="Ciencias Naturales">Ciencias Naturales</option>
+                  <option value="Ciencias Sociales">Ciencias Sociales</option>
+                  <option value="Inglés">Inglés</option>
+                  <option value="Computación">Computación</option>
+                  <option value="Otra">Otra</option>
+                </select>
+              </div>
+
               <div class="d-flex gap-2">
                 <button class="btn btn-primary" type="submit">Guardar</button>
                 <a class="btn btn-outline-secondary" th:href="@{/recursos}">Cancelar</a>
               </div>
+
             </form>
           </div>
         </div>
@@ -101,7 +162,7 @@
 
         <div class="alert alert-light border mt-3">
           <div class="fw-semibold">Tip de estilo</div>
-          <div class="small text-muted">Con Bootstrap: usa <code>container</code>, <code>card</code>, <code>table</code>, <code>form-control</code>. Se ve “pro” sin CSS complejo.</div>
+          <div class="small text-muted">Con Bootstrap: usa <code>container</code>, <code>card</code>, <code>table</code>, <code>form-control</code>. Se ve "pro" sin CSS complejo.</div>
         </div>
       </div>
     </div>

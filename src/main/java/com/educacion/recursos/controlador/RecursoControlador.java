@@ -57,10 +57,48 @@ public class RecursoControlador {
         repo.save(resource);
         return "redirect:/recursos";
     }
-
     @PostMapping("/{id}/delete")
     public String delete(@PathVariable Long id) {
         repo.deleteById(id);
         return "redirect:/recursos";
+    }
+
+@GetMapping("/alumnos")
+    public String listAlumnos(Model model) {
+        model.addAttribute("alumnos", repo.findAll());
+        return "alumnos-lista";
+    }
+
+    @GetMapping("/alumnos/new")
+    public String formAlumno(Model model) {
+        model.addAttribute("alumno", new Recurso());
+        return "alumnos-formulario";
+    }
+
+    @PostMapping("/alumnos")
+    public String createAlumno(@ModelAttribute Recurso alumno) {
+        repo.save(alumno);
+        return "redirect:/recursos/alumnos";
+    }
+
+    @GetMapping("/alumnos/{id}/edit")
+    public String editAlumno(@PathVariable Long id, Model model) {
+        Recurso alumno = repo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
+        model.addAttribute("alumno", alumno);
+        return "alumnos-formulario";
+    }
+
+    @PostMapping("/alumnos/{id}")
+    public String updateAlumno(@PathVariable Long id, @ModelAttribute Recurso alumno) {
+        alumno.setId(id);
+        repo.save(alumno);
+        return "redirect:/recursos/alumnos";
+    }
+
+    @PostMapping("/alumnos/{id}/delete")
+    public String deleteAlumno(@PathVariable Long id) {
+        repo.deleteById(id);
+        return "redirect:/recursos/alumnos";
     }
 }
