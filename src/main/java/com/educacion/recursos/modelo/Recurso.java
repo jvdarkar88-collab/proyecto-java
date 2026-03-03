@@ -16,14 +16,15 @@ public class Recurso {
     private Long id;
 
     // ─── Campos existentes ───────────────────────────────────
-    private String titulo;
+    private String nombreEncargado;
+    private String telefonoEncargado;
     private String tipo;
     private String url;
     private Boolean disponible;
     private String nombreDocente;
 
-    // ─── Campos nuevos del alumno ────────────────────────────
-    private String nombreAlumno;
+    // ─── Campos nuevos del Estudiante ────────────────────────────
+    private String nombreEstudiante;
     private Integer edad;
     private Integer horasEnAcademia;
     private LocalTime horaEntrada;
@@ -36,8 +37,9 @@ public class Recurso {
     }
 
     // ─── Constructor con parámetros existentes ───────────────
-    public Recurso(String titulo, String tipo, String url, Boolean disponible, String nombreDocente) {
-        this.titulo = titulo;
+    public Recurso(String nombreEncargado, String telefonoEncargado, String tipo, String url, Boolean disponible, String nombreDocente) {
+        this.nombreEncargado = nombreEncargado;
+        this.telefonoEncargado = telefonoEncargado;
         this.tipo = tipo;
         this.url = url;
         this.disponible = disponible;
@@ -53,12 +55,20 @@ public class Recurso {
         this.id = id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNombreEncargado() {
+        return nombreEncargado;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNombreEncargado(String nombreEncargado) {
+        this.nombreEncargado = nombreEncargado;
+    }
+
+    public String getTelefonoEncargado() {
+        return telefonoEncargado;
+    }
+
+    public void setTelefonoEncargado(String telefonoEncargado) {
+        this.telefonoEncargado = telefonoEncargado;
     }
 
     public String getTipo() {
@@ -94,12 +104,12 @@ public class Recurso {
     }
 
     // ─── Getters y Setters nuevos del alumno ─────────────────
-    public String getNombreAlumno() {
-        return nombreAlumno;
+    public String getNombreEstudiante() {
+        return nombreEstudiante;
     }
 
-    public void setNombreAlumno(String nombreAlumno) {
-        this.nombreAlumno = nombreAlumno;
+    public void setNombreEstudiante(String nombreEstudiante) {
+        this.nombreEstudiante = nombreEstudiante;
     }
 
     public Integer getEdad() {

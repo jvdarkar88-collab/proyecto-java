@@ -10,4 +10,9 @@ public class ControladorInicio {
     public String home() {
         return "redirect:/recursos";
     }
+
+    @GetMapping("/creditos")
+    public String creditos() {
+        return "recursos-credito";
+}
 }
