@@ -22,6 +22,7 @@
       <a class="navbar-brand fw-semibold" th:href="@{/recursos}">CHATO'S MATH</a>
       <div class="d-flex gap-2">
         <a class="btn btn-primary" th:href="@{/recursos/new}">+ Nuevo estudiante</a>
+        <a class="btn btn-outline-secondary" th:href="@{/recursos/imprimir}">Versión para imprimir</a>
         <a class="btn btn-outline-secondary" th:href="@{/creditos}">Creditos</a>
       </div>
     </div>
@@ -62,6 +63,7 @@
                 <th>Telefono Encargado</th>
                 <th>Genero</th>
                 <th>Registro de Pagos</th>
+                <th>Último Pago</th>
                 <th>Solvente</th>
                 <th>Docente</th>
                 <th>Estudiante</th>
@@ -69,7 +71,6 @@
                 <th>Horas</th>
                 <th>Entrada</th>
                 <th>Salida</th>
-                <th>Profesor</th>
                 <th>Materia</th>
                 <th class="text-end">Acciones</th>
               </tr>
@@ -82,10 +83,11 @@
                 <td class="text-muted" th:text="${r.id}">1</td>
                 <td class="fw-semibold" th:text="${r.nombreEncargado}">Encargado</td>
                 <td class="fw-semibold" th:text="${r.telefonoEncargado}">Telefono Encargado</td>
-                <td th:text="${r.tipo}">Genero</td>
+                <td th:text="${r.tipo == 'M'} ? 'Masculino' : 'Femenino'">—</td>
                 <td>
                   <a th:href="${r.url}" target="_blank" rel="noreferrer">Documento://</a>
                 </td>
+                <td th:text="${r.fechaUltimoPago != null ? r.fechaUltimoPago : 'No registrado'}">—</td>
                 <td>
                   <span class="badge"
                         th:classappend="${r.disponible} ? ' text-bg-success' : ' text-bg-secondary'"
@@ -95,14 +97,13 @@
                 <td th:text="${r.nombreEstudiante}">-</td>
                 <td th:text="${r.edad}">-</td>
                 <td th:text="${r.horasEnAcademia}">-</td>
-                <td th:text="${r.horaEntrada}">-</td>
-                <td th:text="${r.horaSalida}">-</td>
-                <td th:text="${r.nombreProfesor}">-</td>
+                <td th:text="${r.horaEntrada != null ? r.horaEntrada + (r.horaEntrada.compareTo('12:00') < 0 ? ' AM' : ' PM') : '-'}">-</td>
+                <td th:text="${r.horaSalida != null ? r.horaSalida + (r.horaSalida.compareTo('12:00') < 0 ? ' AM' : ' PM') : '-'}">-</td>
                 <td th:text="${r.materiaReforzamiento}">-</td>
                 <td class="text-end">
                   <div class="d-inline-flex gap-2">
                     <a class="btn btn-sm btn-outline-primary"
-                       th:href="@{/recursos/{id}/edit(id=${r.id})}">Editar</a>
+                      th:href="@{/recursos/{id}/edit(id=${r.id})}">Editar</a>
                     <form th:action="@{/recursos/{id}/delete(id=${r.id})}"
                           method="post" class="d-inline">
                       <button class="btn btn-sm btn-outline-danger" type="submit"

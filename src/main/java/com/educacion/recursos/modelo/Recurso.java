@@ -20,6 +20,7 @@ public class Recurso {
     private String telefonoEncargado;
     private String tipo;
     private String url;
+    private java.time.LocalDate fechaUltimoPago;
     private Boolean disponible;
     private String nombreDocente;
 
@@ -159,4 +160,6 @@ public class Recurso {
     public void setMateriaReforzamiento(String materiaReforzamiento) {
         this.materiaReforzamiento = materiaReforzamiento;
     }
+    public java.time.LocalDate getFechaUltimoPago() { return fechaUltimoPago; }
+public void setFechaUltimoPago(java.time.LocalDate fechaUltimoPago) { this.fechaUltimoPago = fechaUltimoPago; }
 }

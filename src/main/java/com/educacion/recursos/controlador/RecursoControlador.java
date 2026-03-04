@@ -40,6 +40,12 @@ public class RecursoControlador {
         return "redirect:/recursos";
     }
 
+    @GetMapping("/imprimir")
+    public String imprimirLista(Model model) {
+    model.addAttribute("resources", repo.findAll());
+        return "recursos-impresion";
+    }
+
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable Long id, Model model) {
         Recurso resource = repo.findById(id)
