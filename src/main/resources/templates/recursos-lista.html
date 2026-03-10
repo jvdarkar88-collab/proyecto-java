@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,6 +26,12 @@
         <a class="btn btn-primary" th:href="@{/recursos/new}">+ Nuevo estudiante</a>
         <a class="btn btn-outline-secondary" th:href="@{/recursos/imprimir}">Versión para imprimir</a>
         <a class="btn btn-outline-secondary" th:href="@{/creditos}">Creditos</a>
+            <span class="text-muted my-auto" sec:authorize="isAuthenticated()">
+      <span sec:authentication="name"></span>
+    </span>
+    <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()" style="display:inline;">
+      <button type="submit" class="btn btn-outline-danger">Cerrar sesión</button>
+    </form>
       </div>
     </div>
   </nav>
