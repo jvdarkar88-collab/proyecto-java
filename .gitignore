@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Credenciales de base de datos - NO subir
+.env
+.env.ps1
